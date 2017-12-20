@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5">
+    <servlet>
+    		<servlet-name>HanaAllServlet</servlet-name>
+    		<servlet-class>hanaall.HanaAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    		<servlet-name>HanaAllServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet>
+        <servlet-name>HanaDeviceDServlet</servlet-name>
+        <servlet-class>hanaall.HanaDeviceDServlet</servlet-class>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>HanaDeviceDServlet</servlet-name>
+		<url-pattern>/devices</url-pattern>
+	</servlet-mapping>
+	<servlet>
+        <servlet-name>HanaDeviceD1Servlet</servlet-name>
+        <servlet-class>hanaall.HanaDeviceD1Servlet</servlet-class>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>HanaDeviceD1Servlet</servlet-name>
+		<url-pattern>/devices1</url-pattern>
+	</servlet-mapping>
+	<resource-ref>
+		<res-ref-name>jdbc/DefaultDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+	</resource-ref>
+</web-app>
