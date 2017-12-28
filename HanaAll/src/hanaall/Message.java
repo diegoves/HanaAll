@@ -13,6 +13,12 @@ public class Message {
 	private Date sysTimestamp;
 	private int dato;
 
+	public Message (String device) {
+		this.device = device;
+	}
+	
+	public Message () {
+	}
 	
 	public String getDevice() {
 		return device;

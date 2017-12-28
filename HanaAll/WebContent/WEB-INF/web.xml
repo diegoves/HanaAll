@@ -26,6 +26,14 @@
 		<servlet-name>HanaDeviceD1Servlet</servlet-name>
 		<url-pattern>/devices1</url-pattern>
 	</servlet-mapping>
+	<servlet>
+        <servlet-name>HanaDeviceList</servlet-name>
+        <servlet-class>hanaall.HanaDeviceList</servlet-class>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>HanaDeviceList</servlet-name>
+		<url-pattern>/deviceslist</url-pattern>
+	</servlet-mapping>
 	<resource-ref>
 		<res-ref-name>jdbc/DefaultDB</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>

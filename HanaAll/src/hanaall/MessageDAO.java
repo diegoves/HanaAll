@@ -93,9 +93,11 @@ public class MessageDAO {
 		final String tableName = "T_IOT_" + Message.MESSAGE_TYPE;
 		Connection connection = dataSource.getConnection();
 		try {
-			PreparedStatement pstmt = connection
+			/*PreparedStatement pstmt = connection
 					.prepareStatement("SELECT G_DEVICE, G_CREATED, C_DATO " + " FROM " + tableName + 
-									" WHERE G_DEVICE='" + DEVICE_D1 + "'");
+									" WHERE G_DEVICE='" + DEVICE_D1 + "'");*/
+			PreparedStatement pstmt = connection
+					.prepareStatement("SELECT ALL " + " FROM " + tableName);
 			ResultSet rs = pstmt.executeQuery();
 			ArrayList<Message> list = new ArrayList<Message>();
 			while (rs.next()) {
@@ -103,6 +105,29 @@ public class MessageDAO {
 				mex.setDevice(rs.getString(1));
 				mex.setSysTimestamp(rs.getDate(2));
 				mex.setDato(rs.getInt(3));
+				list.add(mex);
+			}
+			return list;
+		} finally {
+			if (connection != null) {
+				connection.close();
+			}
+		}
+	}
+	
+	public List<Message> selectDeviceList() throws SQLException {
+		final String tableName = "T_IOT_" + Message.MESSAGE_TYPE;
+		Connection connection = dataSource.getConnection();
+		try {
+			PreparedStatement pstmt = connection
+					.prepareStatement("SELECT DISTINCT G_DEVICE " + " FROM " + tableName);
+			ResultSet rs = pstmt.executeQuery();
+			ArrayList<Message> list = new ArrayList<Message>();
+			while (rs.next()) {
+				Message mex = new Message(rs.getString(0));
+				/*mex.setDevice(rs.getString(1));
+				mex.setSysTimestamp(rs.getDate(2));
+				mex.setDato(rs.getInt(3));*/
 				list.add(mex);
 			}
 			return list;
